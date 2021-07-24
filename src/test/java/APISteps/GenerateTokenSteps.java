@@ -10,7 +10,7 @@ import static io.restassured.RestAssured.*;
 
 public class GenerateTokenSteps {
 
-    static String token;
+    public static String token;
     @Given("JWT is generated")
     public void jwt_is_generated() {
 

@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/APIGetAllEmployees.feature",
+        features = "src/test/resources/features/APIWorkFlow.feature",
         //glue is where we can find implementations for gherkin steps
         //we provide the path of package for steps
         glue = "APISteps",
@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
         //if strict is set to true at the time of execution if cucumber encounters any errors any undefined step, it will give
         //an error and stops execution.Also it gives code snippet for the unimplemented steps
 
-        tags = "@APIRetrievingAllEmployees",
+        tags = "@Random",
         //tags will identify the scenarios based on the tags we will provide such as @smoke,
         //@regression etc
         //we can add multiple tags in the runner class to execute scenarios belong to different tags
