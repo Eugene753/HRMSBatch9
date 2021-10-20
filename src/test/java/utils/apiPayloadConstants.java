@@ -42,10 +42,10 @@ public class apiPayloadConstants {
         return obj.toString();
     }
 
-    public static String creteEmployeeBodyMoreDynamic(String firstname,String lastNmae, String middleName, String gender, String employeeBday, String employeeStatus, String employeeJobTitle){
+    public static String creteEmployeeBodyMoreDynamic(String firstname,String lastName, String middleName, String gender, String employeeBday, String employeeStatus, String employeeJobTitle){
         JSONObject obj=new JSONObject();
         obj.put("emp_firstname",firstname);
-        obj.put("emp_lastname",lastNmae);
+        obj.put("emp_lastname",lastName);
         obj.put("emp_middle_name",middleName);
         obj.put("emp_gender",gender);
         obj.put("emp_birthday",employeeBday);

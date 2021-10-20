@@ -11,8 +11,9 @@ public class DbSteps {
 
     @Then("query the HRMS database")
     public void query_the_hrms_database() {
+        DbUtils dbUtils=new DbUtils();
         String query="select emp_firstname,emp_middle_name,emp_lastname from hs_hr_employees where emp_number ="+ GlobalVariable.empId;
-        List<Map<String,String>> tabelDataAsList=DbUtils.getTableDataAsList(query);
+        List<Map<String,String>> tabelDataAsList=dbUtils.getTableDataAsList(query);
         GlobalVariable.dbFirstName=tabelDataAsList.get(0).get("emp_firstname");
         GlobalVariable.dbMiddleName=tabelDataAsList.get(0).get("emp_middle_name");
         GlobalVariable.dbLastName=tabelDataAsList.get(0).get("emp_lastname");
@@ -20,8 +21,9 @@ public class DbSteps {
 
     @Then("enter query into HRMS database")
     public void enter_query_into_hrms_database() {
+        DbUtils dbUtils=new DbUtils();
         String query="select job_title,job_description,note from ohrm_job_title where job_title = '"+GlobalVariable.newJobTitle+"'";
-        List<Map<String,String>> newJobTable=DbUtils.getTableDataAsList(query);
+        List<Map<String,String>> newJobTable=dbUtils.getTableDataAsList(query);
         GlobalVariable.dbNewJobTitle=newJobTable.get(0).get("job_title");
         GlobalVariable.dbNewJobDescription=newJobTable.get(0).get("job_description");
         GlobalVariable.dbNewJobNote=newJobTable.get(0).get("note");

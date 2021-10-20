@@ -13,10 +13,10 @@ import java.util.Map;
 
 public class ExcelReading {
 
-   static XSSFWorkbook book;
-   static Sheet sheet;
+   public XSSFWorkbook book;
+   public Sheet sheet;
 
-   public static void openExcel(String filePath){
+   public  void openExcel(String filePath){
        try {
            FileInputStream fis = new FileInputStream(filePath);
            book=new XSSFWorkbook(fis);
@@ -27,23 +27,23 @@ public class ExcelReading {
        }
    }
 
-   public static void getSheet(String sheetName){
+   public  void getSheet(String sheetName){
        sheet=book.getSheet(sheetName);
    }
 
-   public static int getRowCount(){
+   public  int getRowCount(){
        return  sheet.getPhysicalNumberOfRows();
    }
 
-   public static int getColsCount(int rowIndex){
+   public  int getColsCount(int rowIndex){
        return sheet.getRow(rowIndex).getPhysicalNumberOfCells();
    }
 
-   public static String getCellData(int rowIndex,int colIndex){
+   public String getCellData(int rowIndex,int colIndex){
        return sheet.getRow(rowIndex).getCell(colIndex).toString();
    }
 
-   public static List<Map<String,String>> excelIntoListMap(String filePath,String sheetName){
+   public  List<Map<String,String>> excelIntoListMap(String filePath,String sheetName){
        openExcel(filePath);
        getSheet(sheetName);
 

@@ -2,8 +2,8 @@ package steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
-import pages.AddEmployeePage;
+
+import org.testng.Assert;
 import pages.DashBoardPage;
 import pages.JobPage;
 import utils.CommonMethods;

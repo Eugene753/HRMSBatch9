@@ -3,8 +3,8 @@ package steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.it.Ma;
-import org.junit.Assert;
+
+import org.testng.Assert;
 import pages.AddEmployeePage;
 import pages.DashBoardPage;
 import utils.CommonMethods;
@@ -17,6 +17,8 @@ import java.util.List;
 import java.util.Map;
 
 public class AddEmployeeSteps extends CommonMethods {
+
+    ExcelReading excelReading=new ExcelReading();
 
     @When("user click on PIM option")
     public void user_click_on_pim_option() {
@@ -95,7 +97,7 @@ public class AddEmployeeSteps extends CommonMethods {
     @When("user adds multiple employees from excel file from {string} sheet and verify they are added")
     public void user_adds_multiple_employees_from_excel_file_from_sheet_and_verify_they_are_added(String sheetname) {
 
-        List<Map<String,String>> newemployees= ExcelReading.excelIntoListMap(Constants.TESTDATA_FILEPATH,sheetname);
+        List<Map<String,String>> newemployees= excelReading.excelIntoListMap(Constants.TESTDATA_FILEPATH,sheetname);
 
         DashBoardPage dash=new DashBoardPage();
         AddEmployeePage addEmployeePage=new AddEmployeePage();

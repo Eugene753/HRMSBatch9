@@ -7,7 +7,8 @@ import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.Assert;
+
+import org.testng.Assert;
 import utils.APICommonMethods;
 import utils.apiConstants;
 import utils.apiPayloadConstants;

@@ -3,22 +3,34 @@ package steps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pages.DashBoardPage;
 import pages.LoginPage;
 import utils.CommonMethods;
 import utils.ConfigReader;
+import utils.Constants;
 
 import java.util.List;
 import java.util.Map;
 
 public class loginSteps extends CommonMethods {
 
+    public WebElement usernamebox=driver.findElement(By.id("txtUsername"));
+
+    public WebElement passwordbox=driver.findElement(By.id("txtPassword"));
+
+
+
     @When("user enters valid admin username and password")
     public void user_enters_valid_admin_username_and_password() {
-        LoginPage loginPage=new LoginPage();
-        sendText(loginPage.usernamebox, ConfigReader.getPropertyValue("username"));
-        sendText(loginPage.passwordbox,ConfigReader.getPropertyValue("password"));
+
+        //loginPage.login(configReader.getPropertyValue("username"),configReader.getPropertyValue("password") );
+        usernamebox.sendKeys("username");
+        passwordbox.sendKeys("password");
     }
 
     @When("user click on login button")
@@ -33,7 +45,7 @@ public class loginSteps extends CommonMethods {
         String expected="Welcome Admin";
         String actual=dash.welcomemessage.getText();
         //Assert.assertTrue(dash.welcomemessage.isDisplayed());
-        Assert.assertEquals("Values do not match",expected,actual);
+        Assert.assertEquals(expected,actual,"Values do not match");
     }
 
     @When("user enters valid ess username and password")
@@ -106,5 +118,7 @@ public class loginSteps extends CommonMethods {
         String actual=loginPage.errorMessage.getText();
         Assert.assertEquals("Values do not match",error,actual);
     }
+
+
 
 }

@@ -7,12 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 public class DbUtils {
+    ConfigReader configReader=new ConfigReader();
 
-    public static Connection getConnection(){
-        ConfigReader.readProperties(Constants.CONFIGURATION_FILEPATH);
+    public  Connection getConnection(){
+
+        configReader.readProperties(Constants.CONFIGURATION_FILEPATH);
         Connection connection=null;
         try {
-            connection=DriverManager.getConnection(ConfigReader.getPropertyValue("dbUrl"),ConfigReader.getPropertyValue("dbUserName"),ConfigReader.getPropertyValue("dbPassword"));
+            connection=DriverManager.getConnection(configReader.getPropertyValue("dbUrl"),configReader.getPropertyValue("dbUserName"),configReader.getPropertyValue("dbPassword"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -20,7 +22,7 @@ public class DbUtils {
     }
 
 
-    public static ResultSet getResultSet(String query){
+    public  ResultSet getResultSet(String query){
         Connection connection=getConnection();
         Statement statement=null;
         ResultSet resultSet=null;
@@ -33,7 +35,7 @@ public class DbUtils {
         return resultSet;
     }
 
-    public static List<Map<String,String>> getTableDataAsList(String query){
+    public  List<Map<String,String>> getTableDataAsList(String query){
         List<Map<String,String>> tableList=new ArrayList<>();
         ResultSetMetaData resultSetMetaData=null;
         Map<String,String> rowMap=null;

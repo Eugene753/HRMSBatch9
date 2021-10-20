@@ -4,16 +4,16 @@ import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.junit.Assert;
+
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
 public class HardCodedExamples {
 
     /**
@@ -48,7 +48,7 @@ public class HardCodedExamples {
         System.out.println(response.asString());
     }
 
-    @Test
+    @Test(priority = 1)
     public void aPostCreateEmployee() {
         RequestSpecification preparedRequest = given().header("Authorization", token).header("Content-Type", "application/json").body("{\n" +
                 "  \"emp_firstname\": \"Danillo\",\n" +
@@ -84,17 +84,15 @@ public class HardCodedExamples {
          * Performing assertion
          */
         response.then().assertThat().statusCode(201);
-
         /**
          * Using Hamcrest Matchers class equalTo()
          */
-        response.then().assertThat().body("Message", equalTo("Employee Created"));
 
+        response.then().assertThat().body("Message", equalTo("Employee Created"));
         /**
          * Write an assertion that verifies that the response body has the name you used
          */
         response.then().assertThat().body("Employee.emp_firstname", equalTo("Danillo"));
-
         /**
          * Verifying server
          */
@@ -102,7 +100,7 @@ public class HardCodedExamples {
     }
 
 
-    @Test
+    @Test(priority = 2)
     public void bGetCreatedEmployee() {
 
         RequestSpecification preparedRequest = given().header("Authorization", token).header("Content-Type", "application/json").queryParam("employee_id", employee_id);
@@ -143,7 +141,7 @@ public class HardCodedExamples {
             System.out.println("false");
         }
     }*/
-    @Test
+    @Test(priority = 3)
     public void cGetAllEmployees() {
         RequestSpecification preparedRequest = given().header("Authorization", token).header("Content-Type", "application/json");
 
@@ -191,7 +189,7 @@ public class HardCodedExamples {
         }
     }
 
-    @Test
+    @Test(priority = 4)
     public void dPutUpdatedCreatedEMployee() {
         RequestSpecification preparedRequest = given().header("Authorization", token).header("Content-Type", "application/json").
                 body("{\n" + " \"employee_id\": \"" + employee_id + "\",\n"

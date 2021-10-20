@@ -2,8 +2,9 @@ package steps;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
+
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.DashBoardPage;
 import utils.CommonMethods;
 

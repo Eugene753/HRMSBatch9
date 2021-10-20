@@ -10,12 +10,13 @@ import utils.CommonMethods;
 import utils.ConfigReader;
 
 public class EmployeeSearchSteps extends CommonMethods {
+    ConfigReader configReader=new ConfigReader();
 
     @Given("user is logged in with valid admin credentials")
     public void user_is_logged_in_with_valid_admin_credentials() {
         LoginPage loginPage=new LoginPage();
-        sendText(loginPage.usernamebox, ConfigReader.getPropertyValue("username"));
-        sendText(loginPage.passwordbox,ConfigReader.getPropertyValue("password"));
+        sendText(loginPage.usernamebox, configReader.getPropertyValue("username"));
+        sendText(loginPage.passwordbox,configReader.getPropertyValue("password"));
         click(loginPage.loginBtn);
 
     }
